@@ -8,8 +8,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        heading: ["Aboreto", "cursive"],
-        body: ["Poppins", "sans-serif"],
+        heading: ["Cormorant Garamond", "serif"],
+        body: ["DM Sans", "sans-serif"],
       },
     },
   },
