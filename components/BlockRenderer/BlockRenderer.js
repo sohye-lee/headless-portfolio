@@ -17,12 +17,14 @@ export const BlockRenderer = ({ blocks }) => {
       }
       case "core/heading": {
         return (
-          <Heading
-            key={block.id}
-            content={block.attributes.content}
-            textAlign={block.attributes.content}
-            level={block.attributes.level}
-          />
+          <div key={block.id} className="">
+            <Heading
+              key={block.id}
+              content={block.attributes.content}
+              textAlign={block.attributes.textAlign}
+              level={block.attributes.level}
+            />
+          </div>
         );
       }
       default: {

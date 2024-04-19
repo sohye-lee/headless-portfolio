@@ -8,6 +8,7 @@ export default function Heading({ textAlign, content, level = 3 }) {
       level
     )} ${getTextAlign(textAlign)}`,
   });
+  console.log("textalign:", textAlign);
 
   return tag;
 }
