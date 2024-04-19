@@ -1,6 +1,4 @@
-import { BlockRenderer } from "components/BlockRenderer/BlockRenderer";
 import Image from "next/image";
-import React from "react";
 
 export default function Cover({ backgroundUrl, children, innerBlocks }) {
   return (

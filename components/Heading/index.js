@@ -1,1 +1,2 @@
-export * from "./Heading";
+import Heading from "./Heading";
+export { Heading };

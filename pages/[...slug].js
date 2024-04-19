@@ -6,7 +6,7 @@ import { transformBlocks } from "utils/transformBlocks";
 export default function Page(props) {
   console.log(props);
   return (
-    <div>
+    <div className="px-4 text-[18px]">
       <BlockRenderer blocks={props.blocks} />
     </div>
   );

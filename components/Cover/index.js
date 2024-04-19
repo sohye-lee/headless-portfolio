@@ -1,1 +1,2 @@
-export * from "./Cover.js";
+import Cover from "./Cover";
+export { Cover };
