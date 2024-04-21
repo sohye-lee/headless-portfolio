@@ -1,3 +1,6 @@
+// import { Cover } from "components/Cover";
+// import { Heading } from "components/Heading";
+// import { Paragraph } from "components/Paragraph";
 import { Cover } from "components/Cover";
 import { Heading } from "components/Heading";
 import { Paragraph } from "components/Paragraph";

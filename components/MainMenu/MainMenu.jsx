@@ -2,9 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import Logo from "public/images/logo-2.svg";
-import { LuArrowDownToLine } from "react-icons/lu";
+import { ButtonLink } from "components/ButtonLink";
 
-export default function MainMenu({ items = [] }) {
+export default function MainMenu({ items = [], ctaButton }) {
   return (
     <div className="w-full">
       <div className="px-4 border-b border-b-black bg-white sticky top-0 left-0 py-5 z-50 flex items-center justify-between">
@@ -28,13 +28,13 @@ export default function MainMenu({ items = [] }) {
             </Link>
           ))}
         </div>
-        <Link
-          href=""
-          download
-          className="bg-black text-white w-8 h-8 flex items-center justify-center  "
-        >
-          <LuArrowDownToLine width={16} />
-        </Link>
+        {ctaButton && (
+          <ButtonLink
+            label={ctaButton.label}
+            target={ctaButton.target}
+            link={ctaButton.link}
+          />
+        )}
       </div>
     </div>
   );

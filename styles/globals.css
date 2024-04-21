@@ -4,6 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .btn {
+    @apply bg-black text-white px-4 py-1 text-sm uppercase hover:bg-gray-800;
+  }
+}
+
 ::-moz-selection {
   color: white;
   background: black;

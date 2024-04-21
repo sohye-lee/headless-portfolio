@@ -1,1 +1,2 @@
-export * from "./BlockRenderer";
+import { BlockRenderer } from "./BlockRenderer";
+export { BlockRenderer };
