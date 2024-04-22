@@ -16,6 +16,18 @@ export const getStaticPaths = async () => {
             uri
           }
         }
+        portfolios {
+          nodes {
+            uri
+            title
+            link
+            featuredImage {
+              node {
+                sourceUrl
+              }
+            }
+          }
+        }
       }
     `,
   });

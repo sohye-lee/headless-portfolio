@@ -30,7 +30,8 @@ export const BlockRenderer = ({ blocks }) => {
         return (
           <Heading
             key={block.id}
-            fontSize={block.attributes.style?.typography.fontSize}
+            fontSize={block.attributes.fontSize}
+            customFontSize={block.attributes.style?.typography?.fontSize}
             content={block.attributes.content}
             textAlign={block.attributes.textAlign}
             level={block.attributes.level}
@@ -39,10 +40,12 @@ export const BlockRenderer = ({ blocks }) => {
         );
       }
       case "core/paragraph": {
+        console.log("paragraph:", block);
         return (
           <Paragraph
             key={block.id}
-            fontSize={block.attributes.style?.typography?.fontSize}
+            fontSize={block.attributes.fontSize}
+            customFontSize={block.attributes.style?.typography?.fontSize}
             textAlign={block.attributes?.textAlign}
             content={block.attributes?.content}
             textColor={

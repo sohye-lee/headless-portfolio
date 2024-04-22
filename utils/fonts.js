@@ -20,7 +20,31 @@ export const getHeadingFontSize = (level = 3) => {
   return `${fontSizes[level] || ""}`;
 };
 
-export const getCusstomFontSize = (pixel) => {
+export const getHeadingFontSizeByString = (fontSize = "large") => {
+  const fontSizes = {
+    "xx-large": "text-7xl",
+    "x-large": "text-5xl",
+    large: "text-4xl",
+    medium: "text-3xl",
+    small: "text-2xl",
+  };
+
+  return `${fontSizes[fontSize] || ""}`;
+};
+
+export const getParagraphFontSizeByString = (fontSize = "medium") => {
+  const fontSizes = {
+    "xx-large": "text-2xl",
+    "x-large": "text-xl",
+    large: "text-lg",
+    medium: "text-md",
+    small: "text-sm",
+  };
+
+  return `${fontSizes[fontSize] || ""}`;
+};
+
+export const getCustomFontSize = (pixel) => {
   return `text-[${pixel}]`;
 };
 
