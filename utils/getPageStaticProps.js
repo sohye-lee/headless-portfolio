@@ -60,6 +60,8 @@ export const getPageStaticProps = async (context) => {
       uri,
     },
   });
+
+  console.log("page data:", data);
   return {
     props: {
       mainMenuItems: mapMenuItems(data.acfOptionsMainMenu.Menu.menuItems),

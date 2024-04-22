@@ -5,14 +5,18 @@ import {
   getTextAlign,
 } from "utils/fonts";
 
-export default function Heading({ textAlign, fontSize, content, level = 3 }) {
+export default function Heading({
+  textAlign,
+  fontSize,
+  content,
+  className,
+  level = 3,
+}) {
   const tag = React.createElement(`h${level}`, {
     dangerouslySetInnerHTML: { __html: content },
-    className: `font-heading  mx-auto uppercase font-semibold mb-5  ${getHeadingFontSize(
+    className: `font-heading   uppercase font-semibold  ${getHeadingFontSize(
       level
-    )} ${fontSize && getCusstomFontSize(fontSize)} ${getTextAlign(
-      textAlign
-    )} -spacing-[0.2em]`,
+    )}  ${getTextAlign(textAlign)} -spacing-[0.2em] ${className}`,
   });
 
   return tag;

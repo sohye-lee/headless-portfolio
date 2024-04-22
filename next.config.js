@@ -10,6 +10,12 @@ const nextConfig = {
         port: "10003",
         pathname: "/wp-content/uploads/*/**",
       },
+      {
+        protocol: "http",
+        hostname: "headless-portfolio.local",
+        port: "",
+        pathname: "/wp-content/uploads/*/**",
+      },
     ],
   },
 };

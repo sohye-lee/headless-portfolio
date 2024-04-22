@@ -19,3 +19,15 @@
   color: white;
   background: black;
 }
+
+#main p a {
+  color: #4158d0;
+  text-decoration: underline;
+}
+
+.project-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: end;
+}
