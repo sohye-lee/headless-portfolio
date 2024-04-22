@@ -26,6 +26,7 @@ export const BlockRenderer = ({ blocks }) => {
         );
       }
       case "core/heading": {
+        console.log("heading:", block);
         return (
           <Heading
             key={block.id}
@@ -38,7 +39,6 @@ export const BlockRenderer = ({ blocks }) => {
         );
       }
       case "core/paragraph": {
-        console.log(block);
         return (
           <Paragraph
             key={block.id}
@@ -95,6 +95,7 @@ export const BlockRenderer = ({ blocks }) => {
         );
       }
       case "core/image": {
+        console.log("image:", block);
         return (
           <Image
             key={block.id}
