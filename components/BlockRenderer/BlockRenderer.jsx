@@ -9,6 +9,7 @@ import { Heading } from "components/Heading";
 import { Paragraph } from "components/Paragraph";
 import { theme } from "theme";
 import Image from "next/image";
+import { PortfolioSearch } from "components/portfolioSearch";
 
 export const BlockRenderer = ({ blocks }) => {
   return blocks.map((block) => {
@@ -112,7 +113,6 @@ export const BlockRenderer = ({ blocks }) => {
       }
       case "core/block":
       case "core/group": {
-        console.log(block);
         return (
           <div key={block.id} className={block.attributes?.className}>
             <BlockRenderer blocks={block.innerBlocks} />
@@ -127,6 +127,10 @@ export const BlockRenderer = ({ blocks }) => {
             style={{ height: block.attributes?.height }}
           ></div>
         );
+      }
+      case "acf/portfoliosearch": {
+        console.log(block);
+        return <PortfolioSearch key={block.id} />;
       }
       default: {
         console.log("unknown:", block);

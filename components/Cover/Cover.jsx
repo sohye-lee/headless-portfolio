@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Cover({ backgroundUrl, children, className }) {
   return (
     <div
-      className={`w-screen h-[75vh] bg-stone-800 flex justify-center items-center flex-col relative px-4 ${className}`}
+      className={`w-full h-[60vh] bg-stone-800 flex justify-center items-center flex-col relative px-4 ${className}`}
     >
       <Image
         src={backgroundUrl}

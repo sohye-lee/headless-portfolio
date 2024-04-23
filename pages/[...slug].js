@@ -20,12 +20,6 @@ export const getStaticPaths = async () => {
           nodes {
             uri
             title
-            link
-            featuredImage {
-              node {
-                sourceUrl
-              }
-            }
           }
         }
       }
@@ -33,7 +27,7 @@ export const getStaticPaths = async () => {
   });
 
   return {
-    paths: data.pages.nodes
+    paths: [...data.pages.nodes, ...data.portfolios.nodes]
       .filter((page) => page.uri !== "/")
       .map((page) => ({
         params: {

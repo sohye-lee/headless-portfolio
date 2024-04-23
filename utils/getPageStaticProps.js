@@ -16,7 +16,24 @@ export const getPageStaticProps = async (context) => {
             title
             blocks(postTemplate: false)
           }
+          ... on Portfolio {
+            id
+            title
+            blocks(postTemplate: false)
+          }
         }
+        # portfolios {
+        #   nodes {
+        #     uri
+        #     title
+        #     featuredImage {
+        #       node {
+        #         sourceUrl
+        #         uri
+        #       }
+        #     }
+        #   }
+        # }
         acfOptionsMainMenu {
           Menu {
             ctaButton {
@@ -61,7 +78,6 @@ export const getPageStaticProps = async (context) => {
     },
   });
 
-  console.log("page data:", data);
   return {
     props: {
       mainMenuItems: mapMenuItems(data.acfOptionsMainMenu.Menu.menuItems),
@@ -70,8 +86,8 @@ export const getPageStaticProps = async (context) => {
         link: data.acfOptionsMainMenu.Menu.ctaButton?.link?.mediaItemUrl,
         target: data.acfOptionsMainMenu.Menu.ctaButton?.target,
       },
-      blocks: transformBlocks(data.nodeByUri.blocks),
-      pageTitle: data.nodeByUri.title,
+      blocks: transformBlocks(data.nodeByUri?.blocks),
+      pageTitle: data.nodeByUri?.title,
     },
   };
 };
