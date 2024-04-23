@@ -2,10 +2,23 @@ import { gql } from "@apollo/client";
 import client from "client";
 const handler = async (req, res) => {
   try {
+    const filters = JSON.parse(req.body);
     const { data } = await client.query({
       query: gql`
         query AllPortfoliosQuery {
-          portfolios {
+          portfolios(
+            where: {
+              offsetPagination: { size: 4, offset: ${
+                ((filters.page || 1) - 1) * 4
+              }}
+              orderby: { field: DATE, order: DESC }
+            }
+          ) {
+            pageInfo {
+              offsetPagination {
+                total
+              }
+            }
             nodes {
               databaseId
               uri
@@ -19,6 +32,7 @@ const handler = async (req, res) => {
                 role
                 stack
                 type
+                tagline
               }
               featuredImage {
                 node {
@@ -34,6 +48,7 @@ const handler = async (req, res) => {
 
     return res.status(200).json({
       portfolios: data.portfolios.nodes,
+      total: data.portfolios.pageInfo.offsetPagination.total,
     });
   } catch (error) {
     console.log("***ERROR:", error);

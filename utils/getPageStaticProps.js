@@ -22,18 +22,7 @@ export const getPageStaticProps = async (context) => {
             blocks(postTemplate: false)
           }
         }
-        # portfolios {
-        #   nodes {
-        #     uri
-        #     title
-        #     featuredImage {
-        #       node {
-        #         sourceUrl
-        #         uri
-        #       }
-        #     }
-        #   }
-        # }
+
         acfOptionsMainMenu {
           Menu {
             ctaButton {
