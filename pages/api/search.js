@@ -3,6 +3,24 @@ import client from "client";
 const handler = async (req, res) => {
   try {
     const filters = JSON.parse(req.body);
+    let stacks = [];
+    let roles = [];
+
+    if (filters.stacks) stacks = filters.stacks.split(",");
+    if (filters.roles) roles = filters.roles.split(",");
+
+    let metaArray = [];
+    if (stacks.length > 0)
+      stacks.map((stack) => {
+        metaArray.push(`{compare: LIKE, key: "stack", value: "${stack}"}`);
+        console.log(metaArray);
+      });
+
+    if (roles.length > 0)
+      roles.map((role) =>
+        metaArray.push(`{compare: LIKE, key: "main_role", value: "${role}"}`)
+      );
+
     const { data } = await client.query({
       query: gql`
         query AllPortfoliosQuery {
@@ -12,7 +30,13 @@ const handler = async (req, res) => {
                 ((filters.page || 1) - 1) * 4
               }}
               orderby: { field: DATE, order: DESC }
+              metaQuery: {
+                metaArray:[${metaArray.join(", ")}],
+                relation: OR
+              }
+        
             }
+
           ) {
             pageInfo {
               offsetPagination {
@@ -45,6 +69,8 @@ const handler = async (req, res) => {
         }
       `,
     });
+
+    // console.log("FILTERED:", data.portfolios.nodes);
 
     return res.status(200).json({
       portfolios: data.portfolios.nodes,

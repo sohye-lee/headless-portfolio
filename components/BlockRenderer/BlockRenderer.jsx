@@ -10,6 +10,7 @@ import { Paragraph } from "components/Paragraph";
 import { theme } from "theme";
 import Image from "next/image";
 import { PortfolioSearch } from "components/portfolioSearch";
+import { FormspreeForm } from "components/FormspreeForm";
 
 export const BlockRenderer = ({ blocks }) => {
   return blocks.map((block) => {
@@ -27,7 +28,7 @@ export const BlockRenderer = ({ blocks }) => {
         );
       }
       case "core/heading": {
-        console.log("heading:", block);
+        // console.log("heading:", block);
         return (
           <Heading
             key={block.id}
@@ -41,7 +42,7 @@ export const BlockRenderer = ({ blocks }) => {
         );
       }
       case "core/paragraph": {
-        console.log("paragraph:", block);
+        // console.log("paragraph:", block);
         return (
           <Paragraph
             key={block.id}
@@ -99,7 +100,7 @@ export const BlockRenderer = ({ blocks }) => {
         );
       }
       case "core/image": {
-        console.log("image:", block);
+        // console.log("image:", block);
         return (
           <Image
             key={block.id}
@@ -129,8 +130,16 @@ export const BlockRenderer = ({ blocks }) => {
         );
       }
       case "acf/portfoliosearch": {
-        console.log(block);
+        // console.log(block);
         return <PortfolioSearch key={block.id} />;
+      }
+      case "acf/formspreeform": {
+        return (
+          <FormspreeForm
+            key={block.id}
+            formId={block.attributes.data.form_id}
+          />
+        );
       }
       default: {
         console.log("unknown:", block);
