@@ -8,7 +8,7 @@ export default function FormspreeForm({ formId }) {
   const [state, handleSubmit] = useForm(formId);
   if (state.succeeded) {
     return (
-      <div className="px-4">
+      <div className="">
         <p className="font-light text-blue-700 ">
           Thanks for sending me a message!
         </p>

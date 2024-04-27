@@ -5,21 +5,18 @@ import Logo from "public/images/logo-2.svg";
 import { ButtonLink } from "components/ButtonLink";
 import { HiOutlineDocumentArrowDown } from "react-icons/hi2";
 import { BsSoundwave } from "react-icons/bs";
-// import audio from "public/name.mp3";
-// import Sound from "public/name.mp3";
+import { IoExit } from "react-icons/io5";
 
 export default function MainMenu({ items = [], ctaButton }) {
   const url =
     "http://headless-portfolio.local/wp-content/uploads/2024/04/name.mp3";
   const [audio, setAudio] = useState(null);
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   useEffect(() => {
     setAudio(new Audio(url));
   }, []);
 
-  const start = async () => {
-    await audio.play();
-  };
   return (
     <div className="w-screen sticky top-0 left-0 z-50 bg-white flex justify-center">
       <div className="px-4 max-w-[1440px] w-full max-auto  ">
@@ -36,15 +33,9 @@ export default function MainMenu({ items = [], ctaButton }) {
             >
               /só·hé/
               <BsSoundwave size="16" />
-              {/* <audio hidden id="player">
-                <source
-                  src="https://docs.google.com/uc?export=download&id=1wD7Tktzcv9odVtvBw17PBW1otLbggPCA"
-                  type="audio/mp3"
-                />
-              </audio> */}
             </span>
           </Link>
-          <div className="flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-7 ">
             {items.map((menuItem) => (
               <Link
                 href={menuItem.link}
@@ -56,14 +47,57 @@ export default function MainMenu({ items = [], ctaButton }) {
               </Link>
             ))}
           </div>
-          {ctaButton && (
-            <ButtonLink
-              label={ctaButton.label}
-              target={ctaButton.target}
-              link={ctaButton.link}
-              icon={<HiOutlineDocumentArrowDown size={20} />}
-            />
-          )}
+          <div className="">
+            {ctaButton && (
+              <ButtonLink
+                label={ctaButton.label}
+                target={ctaButton.target}
+                link={ctaButton.link}
+                icon={<HiOutlineDocumentArrowDown size={20} />}
+                classname="hidden lg:flex py-2"
+              />
+            )}
+            <button
+              className="w-6 h-6 bg-black rounded-full animate-pulse block lg:hidden"
+              onClick={() => setMobileNavOpen(true)}
+            ></button>
+          </div>
+          {/* MOBILE NAV */}
+          <div
+            className={`flex flex-col transition translate-x-[100%] ${
+              mobileNavOpen && "translate-x-0"
+            } min-w-[300px] lg:hidden bg-white fixed top-0 right-0 h-screen px-5 py-4 border-l border-l-black`}
+          >
+            <div
+              className="group cursor-pointer py-8 flex justify-end relative"
+              onClick={() => setMobileNavOpen(false)}
+            >
+              <div className="absolute right-0 top-4 w-6 h-[3px] bg-black rotate-45 group-hover:bg-gray-600"></div>
+              <div className="absolute right-0 top-4 w-6 h-[3px] bg-black rotate-[135deg] group-hover:bg-gray-600"></div>
+            </div>
+            {items.map((menuItem) => (
+              <div key={menuItem.id}>
+                <Link
+                  href={menuItem.link}
+                  className="uppercase py-2 my-2 text-[18px] spacing-1 relative group inline-block"
+                >
+                  {menuItem.label}
+                  <div className="absolute bottom-0 left-0 w-full h-[2px] bg-black scale-x-0 group-hover:scale-x-100 transition-all origin-left"></div>
+                </Link>
+              </div>
+            ))}
+            {ctaButton && (
+              <div>
+                <ButtonLink
+                  label={ctaButton.label}
+                  target={ctaButton.target}
+                  link={ctaButton.link}
+                  icon={<HiOutlineDocumentArrowDown size={20} />}
+                  classname="mt-5 inline-flex py-2"
+                />
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>

@@ -37,9 +37,12 @@ export default function PortfolioFeatures({
         </div>
         <p>{description}</p>
 
-        <div className="mt-5">
+        <div className="mt-5 flex items-center gap-3">
           <Link href={link} className="btn white inline-block" target="_blank">
-            Open Website
+            Visit Website
+          </Link>
+          <Link href="/projects" className="btn white inline-block">
+            All Projects
           </Link>
         </div>
       </div>

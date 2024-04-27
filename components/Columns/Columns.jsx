@@ -19,8 +19,10 @@ export default function Columns({
           paddingLeft: `${style?.spacing?.padding?.left?.split("|")[2]}px`,
           paddingRight: `${style?.spacing?.padding?.right?.split("|")[2]}px`,
         }}
-        className={`w-full  space-x-6 pr-6 mx-auto ${
-          isStackedOnMobile ? "block md:flex " : "flex"
+        className={`w-full flex mx-auto ${
+          isStackedOnMobile
+            ? "flex-col md:flex-row space-y-6 md:space-x-6 md:space-y-0 md:pr-6"
+            : "flex-row space-x-6 pr-6"
         } items-stretch ${className} `}
       >
         {children}

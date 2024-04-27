@@ -80,12 +80,14 @@ export const BlockRenderer = ({ blocks }) => {
           );
         }
         case "acf/ctabutton": {
+          console.log("button:", block);
           return (
             <CallToActionButton
               key={block.id}
               align={block.attributes?.data?.align}
               label={block.attributes?.data?.label}
               link={block.attributes?.data?.link?.guid}
+              textLink={block.attributes?.data?.text_link}
               classname={block.attributes?.data?.classname}
             />
           );
