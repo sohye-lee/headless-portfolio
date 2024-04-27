@@ -15,16 +15,12 @@ export default function ImageGallery({ columns, className, blocks }) {
     },
   };
   return (
-    // <div className={`${className} grid grid-cols-${columns} gap-3 py-5`}>
-    //   {children}
-    // </div>
+ 
     <Swiper
       spaceBetween={50}
       slidesPerView={1}
       pagination={pagination}
       modules={[Pagination]}
-      //   onSlideChange={() => console.log("slide change")}
-      //   onSwiper={(swiper) => console.log(swiper)}
       autoplay
       className="w-full aspect-video my-8 mySwiper"
     >

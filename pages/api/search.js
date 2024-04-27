@@ -20,7 +20,6 @@ const handler = async (req, res) => {
         metaArray.push(`{compare: LIKE, key: "main_role", value: "${role}"}`)
       );
 
-    console.log(metaArray);
     const { data } = await client.query({
       query: gql`
         query AllPortfoliosQuery {
@@ -69,8 +68,6 @@ const handler = async (req, res) => {
         }
       `,
     });
-
-    // console.log("FILTERED:", data.portfolios.nodes);
 
     return res.status(200).json({
       portfolios: data.portfolios.nodes,

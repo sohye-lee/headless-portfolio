@@ -7,7 +7,6 @@ import Image from "next/image";
 import React from "react";
 
 export default function Page(props) {
-  console.log("Props:", props);
   return (
     <>
       {/* <Head>
@@ -42,5 +41,3 @@ export default function Page(props) {
     </>
   );
 }
-
-
