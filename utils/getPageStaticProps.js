@@ -14,12 +14,32 @@ export const getPageStaticProps = async (context) => {
           ... on Page {
             id
             title
-            blocks(postTemplate: false)
+            blocks(
+              htmlContent: true
+              # originalContent: true
+              # dynamicContent: true
+              attributes: true
+              postTemplate: false
+            )
+            featuredImage {
+              node {
+                mediaItemUrl
+              }
+            }
+            seo {
+              title
+              metaDesc
+            }
           }
           ... on Portfolio {
             id
             title
             blocks(postTemplate: false)
+            featuredImage {
+              node {
+                mediaItemUrl
+              }
+            }
           }
         }
 
@@ -67,6 +87,8 @@ export const getPageStaticProps = async (context) => {
     },
   });
 
+  console.log("Page Data:", data);
+
   return {
     props: {
       mainMenuItems: mapMenuItems(data.acfOptionsMainMenu.Menu.menuItems),
@@ -77,6 +99,11 @@ export const getPageStaticProps = async (context) => {
       },
       blocks: transformBlocks(data.nodeByUri?.blocks),
       pageTitle: data.nodeByUri?.title,
+      seo: {
+        title: data.nodeByUri?.seo?.title || data.nodeByUri?.title,
+        metaDesc: data.nodeByUri?.seo?.metaDesc || "",
+      },
+      featuredImage: data.nodeByUri?.featuredImage?.node?.mediaItemUrl || "",
     },
   };
 };

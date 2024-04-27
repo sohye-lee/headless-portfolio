@@ -13,6 +13,7 @@ export default function Paragraph({
   fontSize,
   customFontSize,
   className,
+  fontWeight,
 }) {
   return (
     <p
@@ -21,11 +22,12 @@ export default function Paragraph({
         customFontSize && getCustomFontSize(customFontSize)
       } 
       ${fontSize && getParagraphFontSizeByString(fontSize)}
-      ${className}`}
+      ${className} leading-[1.6]`}
       style={{
         color: textColor,
         fontSize: fontSize,
         textAlign: getTextAlign(textAlign),
+        fontWeight: fontWeight,
       }}
       dangerouslySetInnerHTML={{ __html: getAbsoluteUrls(content) }}
     />

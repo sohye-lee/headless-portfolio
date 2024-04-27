@@ -13,7 +13,6 @@ const handler = async (req, res) => {
     if (stacks.length > 0)
       stacks.map((stack) => {
         metaArray.push(`{compare: LIKE, key: "stack", value: "${stack}"}`);
-        console.log(metaArray);
       });
 
     if (roles.length > 0)
@@ -21,6 +20,7 @@ const handler = async (req, res) => {
         metaArray.push(`{compare: LIKE, key: "main_role", value: "${role}"}`)
       );
 
+    console.log(metaArray);
     const { data } = await client.query({
       query: gql`
         query AllPortfoliosQuery {

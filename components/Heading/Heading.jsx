@@ -11,6 +11,7 @@ export default function Heading({
   fontSize,
   customFontSize,
   content,
+  textColor,
   className,
   level = "",
 }) {
@@ -22,10 +23,10 @@ export default function Heading({
   // });
   const tag = React.createElement(`h${level}`, {
     dangerouslySetInnerHTML: { __html: content },
-    style: { fontSize: customFontSize },
-    className: `font-heading   uppercase font-medium   ${
+    style: { fontSize: customFontSize, color: textColor },
+    className: `heading font-heading  uppercase ${
       fontSize && getHeadingFontSizeByString(fontSize)
-    }  ${getTextAlign(textAlign)} -spacing-[0.2em] ${className}`,
+    }  ${getTextAlign(textAlign)} -spacing-[0.3em] ${className}`,
   });
 
   return tag;

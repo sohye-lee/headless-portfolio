@@ -51,3 +51,4 @@ export const getCustomFontSize = (pixel) => {
 export const getCustomTextColor = (color) => {
   return `text-[${color}]`;
 };
+

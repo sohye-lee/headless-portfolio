@@ -11,6 +11,14 @@ import { theme } from "theme";
 import Image from "next/image";
 import { PortfolioSearch } from "components/portfolioSearch";
 import { FormspreeForm } from "components/FormspreeForm";
+import { PortfolioFeatures } from "components/PortfolioFeatures";
+import { ImageGallery } from "components/ImageGallery";
+import { SocialLink } from "components/SocialLinks/SocialLink";
+import { SocialLinks } from "components/SocialLinks";
+import { List } from "components/List";
+import { ListItem } from "components/List/ListItem";
+import { StackList } from "components/StackList";
+import { Html } from "components/Html";
 
 export const BlockRenderer = ({ blocks }) => {
   return blocks.map((block) => {
@@ -28,7 +36,6 @@ export const BlockRenderer = ({ blocks }) => {
         );
       }
       case "core/heading": {
-        // console.log("heading:", block);
         return (
           <Heading
             key={block.id}
@@ -37,12 +44,15 @@ export const BlockRenderer = ({ blocks }) => {
             content={block.attributes.content}
             textAlign={block.attributes.textAlign}
             level={block.attributes.level}
+            textColor={
+              theme[block.attributes?.textColor] ||
+              block.attributes.style?.color?.text
+            }
             className={block.attributes?.className}
           />
         );
       }
       case "core/paragraph": {
-        // console.log("paragraph:", block);
         return (
           <Paragraph
             key={block.id}
@@ -55,6 +65,7 @@ export const BlockRenderer = ({ blocks }) => {
               block.attributes.style?.color?.text
             }
             className={block.attributes?.className}
+            fontWeight={block.attributes.style?.typography?.fontWeight}
           />
         );
       }
@@ -73,7 +84,7 @@ export const BlockRenderer = ({ blocks }) => {
             align={block.attributes?.data?.align}
             label={block.attributes?.data?.label}
             link={block.attributes?.data?.link?.guid}
-            className={block.attributes?.className}
+            classname={block.attributes?.data?.classname}
           />
         );
       }
@@ -82,25 +93,33 @@ export const BlockRenderer = ({ blocks }) => {
           <Columns
             key={block.id}
             isStackedOnMobile={block.attributes?.isStackedOnMobile}
+            backgroundColor={block.attributes?.backgroundColor}
+            style={block.attributes?.style}
             className={block.attributes?.className}
           >
-            <BlockRenderer blocks={block.innerBlocks} />
+            {block.innerBlocks ? (
+              <BlockRenderer blocks={block.innerBlocks} />
+            ) : (
+              <span></span>
+            )}
           </Columns>
         );
       }
       case "core/column": {
+        console.log("single column:", block);
         return (
           <Column
             key={block.id}
             width={block.attributes?.width}
+            backgroundColor={block.attributes?.backgroundColor}
             className={block.attributes?.className}
+            style={block.attributes?.style}
           >
-            <BlockRenderer blocks={block.innerBlocks} />
+            {block.innerBlocks && <BlockRenderer blocks={block.innerBlocks} />}
           </Column>
         );
       }
       case "core/image": {
-        // console.log("image:", block);
         return (
           <Image
             key={block.id}
@@ -130,8 +149,22 @@ export const BlockRenderer = ({ blocks }) => {
         );
       }
       case "acf/portfoliosearch": {
-        // console.log(block);
         return <PortfolioSearch key={block.id} />;
+      }
+      case "acf/portfoliofeatures": {
+        return (
+          <PortfolioFeatures
+            key={block.id}
+            stack={block.attributes.stack}
+            role={block.attributes.role}
+            main_role={block.attributes.main_role}
+            description={block.attributes.description}
+            tagline={block.attributes.tagline}
+            company={block.attributes.company}
+            type={block.attributes.type}
+            link={block.attributes.link}
+          />
+        );
       }
       case "acf/formspreeform": {
         return (
@@ -140,6 +173,57 @@ export const BlockRenderer = ({ blocks }) => {
             formId={block.attributes.data.form_id}
           />
         );
+      }
+      case "core/gallery": {
+        return (
+          <ImageGallery
+            className={block.attributes?.className}
+            columns={block.attributes?.columns}
+            key={block.id}
+            blocks={block.innerBlocks}
+          />
+        );
+      }
+      case "core/social-link": {
+        return (
+          <SocialLink
+            key={block.id}
+            rel={block.attributes?.rel}
+            service={block.attributes?.service}
+          />
+        );
+      }
+      case "core/social-links": {
+        return (
+          <SocialLinks key={block.id}>
+            <BlockRenderer blocks={block.innerBlocks} />
+          </SocialLinks>
+        );
+      }
+      case "core/list": {
+        return (
+          <List key={block.id}>
+            <BlockRenderer blocks={block.innerBlocks} />
+          </List>
+        );
+      }
+      case "core/list-item": {
+        return (
+          <ListItem
+            key={block.id}
+            content={block.attributes?.content}
+            fontSize={block.attributes.fontSize}
+            fontWeight={block.attributes.style?.typography?.fontWeight}
+          />
+        );
+      }
+      case "acf/stacklist": {
+        return (
+          <StackList key={block.id} stack={block.attributes?.data?.stack} />
+        );
+      }
+      case "core/html": {
+        return <Html key={block.id} htmlContent={block.htmlContent} />;
       }
       default: {
         console.log("unknown:", block);

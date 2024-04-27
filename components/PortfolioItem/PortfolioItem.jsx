@@ -17,16 +17,17 @@ export default function PortfolioItem({ portfolio }) {
         />
       </Link>
       <div className="pt-5 pb-8 flex flex-col gap-2">
-        <p className="uppercase text-xs flex items-center gap-1">
-          {portfolio.portfolioFeatures.mainRole.map((role) => (
-            <span
-              key={role}
-              className="border border-gray-700 text-gray-700 px-2 py-[2px] rounded-[30px]"
-            >
-              {role}
-            </span>
-          ))}
-        </p>
+        {/* <p className="uppercase text-xs flex items-center gap-1">
+          {portfolio.portfolioFeatures.mainRole &&
+            portfolio.portfolioFeatures.mainRole.map((role) => (
+              <span
+                key={role}
+                className="border border-gray-700 text-gray-700 px-2 py-[2px] rounded-[30px]"
+              >
+                {role}
+              </span>
+            ))}
+        </p> */}
         <div>
           <div className="inline-block relative">
             <Link

@@ -5,7 +5,7 @@ import { IoMailOpen, IoPhonePortrait } from "react-icons/io5";
 
 export default function Footer() {
   return (
-    <div className="w-full flex flex-col items-center gap-5 pt-10 pb-6 absolute bottom-0 left-0">
+    <div className="w-full flex flex-col items-center gap-5 pt-10 pb-6 absolute bottom-0 left-0 z-30">
       <div className="max-w-3xl flex items-center justify-center gap-8">
         <p className="text-gray-600 uppercase text-[12px]">Fairfax, Virginia</p>
 

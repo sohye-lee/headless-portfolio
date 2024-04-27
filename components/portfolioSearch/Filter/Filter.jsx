@@ -22,7 +22,7 @@ export default function Filter({ onSearch }) {
     queryStacks && setStacks(queryStacks.split(","));
   }, []);
   return (
-    <div className="flex flex-col lg:flex-row justify-between lg:items-end gap-3">
+    <div className="flex flex-col lg:flex-row justify-between lg:items-end gap-3 py-5">
       {/* <form className="block">
         <div className="relative inline-block">
           <input
@@ -38,7 +38,7 @@ export default function Filter({ onSearch }) {
         </div>
       </form> */}
       <div className="flex flex-col gap-4">
-        <div className="flex flex-wrap items-center gap-3">
+        <div className="flex flex-wrap items-center gap-2">
           {roleValues.map((role) => (
             <div
               key={role}
