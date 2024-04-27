@@ -16,6 +16,12 @@ const nextConfig = {
         port: "",
         pathname: "/wp-content/uploads/*/**",
       },
+      {
+        protocol: "https",
+        hostname: "sohyekim.flywheelsites.com",
+        port: "",
+        pathname: "/wp-content/uploads/*/**",
+      },
     ],
   },
 };
