@@ -4,6 +4,7 @@ import React from "react";
 export default function PortfolioFeatures({
   type,
   company,
+  company_website,
   stack,
   role,
   main_role,
@@ -24,7 +25,22 @@ export default function PortfolioFeatures({
           </div>
           <div>
             <span className="text-2xl">&#x2B22;</span> {type}{" "}
-            {company && company != "" && <span>| {company}</span>}
+            {company && company != "" && (
+              <span>
+                |{" "}
+                {company_website ? (
+                  <Link
+                    href={company_website}
+                    target="_blank"
+                    className="  underline"
+                  >
+                    {company}
+                  </Link>
+                ) : (
+                  company
+                )}
+              </span>
+            )}
           </div>
 
           <div>

@@ -7,6 +7,7 @@ import Image from "next/image";
 import React, { useEffect } from "react";
 
 export default function Page(props) {
+  console.log("PROPS:", props);
   useEffect(() => {
     if (
       typeof window !== "undefined" &&

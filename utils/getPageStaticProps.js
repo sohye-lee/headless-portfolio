@@ -16,8 +16,8 @@ export const getPageStaticProps = async (context) => {
             title
             blocks(
               htmlContent: true
-              # originalContent: true
-              # dynamicContent: true
+              originalContent: true
+              dynamicContent: true
               attributes: true
               postTemplate: false
             )

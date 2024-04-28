@@ -166,6 +166,7 @@ export const BlockRenderer = ({ blocks }) => {
               description={block.attributes.description}
               tagline={block.attributes.tagline}
               company={block.attributes.company}
+              company_website={block.attributes.company_website}
               type={block.attributes.type}
               link={block.attributes.link}
             />
@@ -180,6 +181,7 @@ export const BlockRenderer = ({ blocks }) => {
           );
         }
         case "core/gallery": {
+          console.log("gallery:", block);
           return (
             <ImageGallery
               className={block.attributes?.className}
