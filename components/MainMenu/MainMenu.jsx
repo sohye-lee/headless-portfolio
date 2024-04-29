@@ -59,45 +59,47 @@ export default function MainMenu({ items = [], ctaButton }) {
             )}
             <button
               className="w-6 h-6 bg-black rounded-full animate-pulse block lg:hidden"
-              onClick={() => setMobileNavOpen(true)}
+              onClick={() => {
+                setMobileNavOpen(true);
+              }}
             ></button>
           </div>
           {/* MOBILE NAV */}
-          <div
-            className={`flex flex-col transition translate-x-[100%] ${
-              mobileNavOpen && "translate-x-0"
-            } min-w-[300px] lg:hidden bg-white fixed top-0 right-0 h-screen px-5 py-4 border-l border-l-black`}
-          >
+          {mobileNavOpen && (
             <div
-              className="group cursor-pointer py-8 flex justify-end relative"
-              onClick={() => setMobileNavOpen(false)}
+              className={`flex flex-col transition  min-w-[300px] lg:hidden bg-white fixed top-0 right-0 h-screen px-5 py-4 border-l border-l-black`}
             >
-              <div className="absolute right-0 top-4 w-6 h-[3px] bg-black rotate-45 group-hover:bg-gray-600"></div>
-              <div className="absolute right-0 top-4 w-6 h-[3px] bg-black rotate-[135deg] group-hover:bg-gray-600"></div>
+              <div
+                className="group cursor-pointer py-8 flex justify-end relative"
+                onClick={() => setMobileNavOpen(false)}
+              >
+                <div className="absolute right-0 top-4 w-6 h-[3px] bg-black rotate-45 group-hover:bg-gray-600"></div>
+                <div className="absolute right-0 top-4 w-6 h-[3px] bg-black rotate-[135deg] group-hover:bg-gray-600"></div>
+              </div>
+              {items.map((menuItem) => (
+                <div key={menuItem.id}>
+                  <Link
+                    href={menuItem.link}
+                    className="uppercase py-2 my-2 text-[18px] spacing-1 relative group inline-block"
+                  >
+                    {menuItem.label}
+                    <div className="absolute bottom-0 left-0 w-full h-[2px] bg-black scale-x-0 group-hover:scale-x-100 transition-all origin-left"></div>
+                  </Link>
+                </div>
+              ))}
+              {ctaButton && (
+                <div>
+                  <ButtonLink
+                    label={ctaButton.label}
+                    target={ctaButton.target}
+                    link={ctaButton.link}
+                    icon={<HiOutlineDocumentArrowDown size={20} />}
+                    classname="mt-5 inline-flex py-2"
+                  />
+                </div>
+              )}
             </div>
-            {items.map((menuItem) => (
-              <div key={menuItem.id}>
-                <Link
-                  href={menuItem.link}
-                  className="uppercase py-2 my-2 text-[18px] spacing-1 relative group inline-block"
-                >
-                  {menuItem.label}
-                  <div className="absolute bottom-0 left-0 w-full h-[2px] bg-black scale-x-0 group-hover:scale-x-100 transition-all origin-left"></div>
-                </Link>
-              </div>
-            ))}
-            {ctaButton && (
-              <div>
-                <ButtonLink
-                  label={ctaButton.label}
-                  target={ctaButton.target}
-                  link={ctaButton.link}
-                  icon={<HiOutlineDocumentArrowDown size={20} />}
-                  classname="mt-5 inline-flex py-2"
-                />
-              </div>
-            )}
-          </div>
+          )}
         </div>
       </div>
     </div>
