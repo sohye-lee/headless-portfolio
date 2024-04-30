@@ -5,17 +5,16 @@ import Logo from "public/images/logo-2.svg";
 import { ButtonLink } from "components/ButtonLink";
 import { HiOutlineDocumentArrowDown } from "react-icons/hi2";
 import { BsSoundwave } from "react-icons/bs";
-import { IoExit } from "react-icons/io5";
 
 export default function MainMenu({ items = [], ctaButton }) {
   const url =
-    "http://headless-portfolio.local/wp-content/uploads/2024/04/name.mp3";
+    "https://sohyekim.flywheelsites.com/wp-content/uploads/2024/04/name.mp3";
   const [audio, setAudio] = useState(null);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   useEffect(() => {
     setAudio(new Audio(url));
-  }, []);
+  }, [url]);
 
   return (
     <div className="w-screen sticky top-0 left-0 z-50 bg-white flex justify-center">
