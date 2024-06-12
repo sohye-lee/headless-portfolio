@@ -5,7 +5,8 @@ import { PageTitle } from "components/PageTitle";
 import Head from "next/head";
 import Image from "next/image";
 import React, { useEffect } from "react";
-import { GoogleAnalytics } from '@next/third-parties/google' 
+import { GoogleAnalytics } from '@next/third-parties/google' ;
+import Script from 'next/script';
 
 export default function Page(props) {
   console.log("PROPS:", props);
@@ -92,14 +93,14 @@ export default function Page(props) {
   return (
     <>
       <Head>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-TD6DE47WN3"></script>
-<script>
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-TD6DE47WN3" />
+<Script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments)}
   gtag('js', new Date());
 
   gtag('config', 'G-TD6DE47WN3');
-</script>
+</Script>
         {/* <title>{props.pageTitle} | Sohye Kim</title>
         <meta name="description" content={props.seo?.metaDesc} /> */}
       </Head>
