@@ -5,6 +5,7 @@ import { PageTitle } from "components/PageTitle";
 import Head from "next/head";
 import Image from "next/image";
 import React, { useEffect } from "react";
+import { GoogleAnalytics } from '@next/third-parties/google' 
 
 export default function Page(props) {
   console.log("PROPS:", props);
@@ -119,6 +120,7 @@ export default function Page(props) {
           <Footer />
         </div>
       </div>
+       <GoogleAnalytics gaId="G-TD6DE47WN3" />
     </>
   );
 }
