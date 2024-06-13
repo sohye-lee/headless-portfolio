@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <script
           async
-          src="https://www.googletagmanager.com/gtag/js?id=G-TD6DE47WN3"
+          src={`https://www.googletagmanager.com/gtag/js?id=${env.GA_MEASUREMENT_ID}`}
         ></script>
         <script
           dangerouslySetInnerHTML={{
