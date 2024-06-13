@@ -11,17 +11,17 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <Script
+        <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-TD6DE47WN3"
-        />
-        <Script
+        ></script>
+        <script
           dangerouslySetInnerHTML={{
             __html: `window.dataLayer = window.dataLayer || []; function gtag(){" "}
           {dataLayer.push(arguments)}
           gtag('js', new Date()); gtag('config', '${env.GA_MEASUREMENT_ID}');`,
           }}
-        ></Script>
+        ></script>
       </Head>
       <Component {...pageProps} />
       <GoogleAnalytics gaId={env.GA_MEASUREMENT_ID} />
