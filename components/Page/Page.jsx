@@ -92,19 +92,7 @@ export default function Page(props) {
 
   return (
     <>
-  <Head>
- 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TD6DE47WN3"/>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-      dataLayer.push(arguments)
-      }
-      gtag('js', new Date());
 
-      gtag('config', 'G-TD6DE47WN3');
-    </script>
-  </Head>
       <MainMenu items={props.mainMenuItems} ctaButton={props.ctaButton} />
       <div className="text-[18px] flex flex-col items-center w-full min-h-screen relative z-10 pt-10">
         <div className="px-4 max-w-[1440px] w-full pb-20 gap-0">
@@ -130,7 +118,6 @@ export default function Page(props) {
           <Footer />
         </div>
       </div>
-       <GoogleAnalytics gaId="G-TD6DE47WN3" />
   
 
     </>
