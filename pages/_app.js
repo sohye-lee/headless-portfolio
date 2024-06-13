@@ -17,9 +17,11 @@ function MyApp({ Component, pageProps }) {
         ></script>
         <script
           dangerouslySetInnerHTML={{
-            __html: `window.dataLayer = window.dataLayer || []; function gtag(){" "}
-          {dataLayer.push(arguments)}
-          gtag('js', new Date()); gtag('config', 'G-TD6DE47WN3');`,
+            __html: ` window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TD6DE47WN3');`,
           }}
         ></script>
       </Head>
