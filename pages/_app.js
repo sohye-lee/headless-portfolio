@@ -15,13 +15,11 @@ function MyApp({ Component, pageProps }) {
           async
           src={`https://www.googletagmanager.com/gtag/js?id=G-TD6DE47WN3`}
         ></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `window.dataLayer = window.dataLayer || []; function gtag(){" "}
+        <script>
+          window.dataLayer = window.dataLayer || []; function gtag(){" "}
           {dataLayer.push(arguments)}
-          gtag('js', new Date()); gtag('config', 'G-TD6DE47WN3');`,
-          }}
-        ></script>
+          gtag('js', new Date()); gtag('config', 'G-TD6DE47WN3');
+        </script>
       </Head>
       <Component {...pageProps} />
       <GoogleAnalytics gaId="G-TD6DE47WN3" />
